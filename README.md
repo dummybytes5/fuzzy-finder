@@ -34,6 +34,13 @@ pip install -r requirements.txt
 1. Set your GitHub API token as an environment variable
 
 ```bash
+# create .env file where the scrapper.py is and add key like this
+GITHUB_TOKEN="key goes here"
+```
+
+## Or just copy and paste the following in your mac or windows terminal
+
+```bash
 # On Windows PowerShell
 $env:GITHUB_TOKEN="your_github_token"
 
