@@ -16,8 +16,9 @@ f = open(output_file, "w")
 def write_and_print(message):
     """Write to both console and file"""
     print(message)
-    f.write(message + "\n")
-    f.flush()  
+    if not f.closed:
+        f.write(message + "\n")
+        f.flush()
 
 if not GITHUB_TOKEN or not FRAMEWORK:
     write_and_print("Error: Missing GITHUB_TOKEN or FRAMEWORK environment variables.")
@@ -97,5 +98,7 @@ write_and_print(f"Total repositories retrieved: {len(all_repositories)}")
 write_and_print(f"Closing output file...")
 
 f.close()
-write_and_print(f"Results saved to {output_file}")
-write_and_print(f"Script execution completed")
+
+# Use direct print for messages after file is closed
+print(f"Results saved to {output_file}")
+print(f"Script execution completed")
